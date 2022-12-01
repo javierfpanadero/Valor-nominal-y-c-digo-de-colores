@@ -1,0 +1,31 @@
+import random
+import os
+
+# ACUÉRDATE DE BORRAR A MANO las versiones anteriores de los ficheros de salida porque se crean en modo append para hacer el bucle y entonces no se sobreescriben
+
+COLORES = ['negro','marrón','rojo','naranja','amarillo','verde','azul','violeta','gris','blanco']
+
+numero = 3
+# numero = int(input('¿Cuántas resistencias quieres? '))
+
+# Este archivo está en formato GIFT
+
+for i in range(numero):
+    anillo1 = random.randint(1, 9)
+    anillo2 = random.randint(0, 9)
+    anillo3 = random.randint(0, 6)
+    valor = (10 * anillo1 + anillo2) * 10 ** anillo3
+
+    with open('resistencias_colores.txt', 'a') as f:
+        f.write(f'¿Cuál es el valor nominal de una resistencia con estos anillos expresado en ohmios? {COLORES[anillo1]}, {COLORES[anillo2]}, {COLORES[anillo3]}. (Recuerda que los colores son: negro, marrón, rojo, naranja, amarillo, verde, azul, violeta, gris y blanco). \u007b{valor}\u007d')
+        f.write('\n')
+        f.write('\n')
+
+# Este archivo va en formato GIFT
+        
+# \u007b y \u007d son los unicode de las llaves (curly brackets) para poder escaparlos en un string con format y no se crea que voy a poner una variable
+    
+    with open('resistencias_valores.txt', 'a') as f:
+        f.write(f'¿Cuáles son los anillos de una resistencia de {valor} ohmios? Pon los colores separados por un espacio. Recuerda que los colores son: negro, marrón, rojo, naranja, amarillo, verde, azul, violeta, gris y blanco.  \u007b{COLORES[anillo1]} {COLORES[anillo2]} {COLORES[anillo3]}\u007d')
+        f.write('\n')
+        f.write('\n')
