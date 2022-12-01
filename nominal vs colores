@@ -1,7 +1,12 @@
 import random
 import os
 
-# ACUÉRDATE DE BORRAR A MANO las versiones anteriores de los ficheros de salida porque se crean en modo append para hacer el bucle y entonces no se sobreescriben
+# Este intento de abrir los archivos los vacía de contenido si existen y no da error si no existen gracias al context manager (with)
+
+with open('resistencias_colores.txt', 'w'):
+    pass
+with open('resistencias_valores.txt', 'w'):
+    pass
 
 COLORES = ['negro','marrón','rojo','naranja','amarillo','verde','azul','violeta','gris','blanco']
 
